@@ -46,15 +46,7 @@ function updateWeather(data) {
     document.getElementById('current-location-weather-img').alt = current.condition.text;
     document.getElementById('current-location-temperature').innerText = `${current.temp_c}°C`;
     document.getElementById('weatherCondition').innerText = current.condition.text;
-    // document.getElementById('wind-speed').innerText = `${current.wind_kph} km/h`;
-    // document.getElementById('Humidity').innerText = `${current.humidity} %`;
-    // document.getElementById('Pressure').innerText = `${current.pressure_mb} hPa`;
-    // document.getElementById('Precipitation').innerText = `${current.precip_mm} mm `;
-    // document.getElementById('Sunset').innerText = `${data.forecast.forecastday[0].astro.sunset} `;
-    // document.getElementById('Sunrise').innerText = `${data.forecast.forecastday[0].astro.sunrise} `;
-    // document.getElementById('uvIndex').innerText = `${current.uv}`;
-    // document.getElementById('Visibility').innerText = `${current.vis_km} `;
-     document.getElementById('feelLikes').innerText = `${current.feelslike_c} `;
+    document.getElementById('feelLikes').innerText = `${current.feelslike_c} `;
  
     const hourly_forecast = $('#hourly-forecast');
     hourly_forecast.empty();
@@ -64,15 +56,12 @@ function updateWeather(data) {
                 <p class="text-center mt-2">${hour.time.split(' ')[1]}</p>
                 <img src="${hour.condition.icon}" alt="${hour.condition.text}" class="card-img">
                 <p class="text-center mt-2">${hour.temp_c}°C</p>
-            </div>    
-        `);
+            </div>    `
+        );
     });
-    
 
     const fiveDayForecast = $('#05-Days-Forecast');
-
     fiveDayForecast.empty();
-    
     data.forecast.forecastday.slice(0, 7).forEach(day => {
         fiveDayForecast.append(`
             <div class="cardForecast d-flex">
@@ -92,8 +81,7 @@ function updateWeather(data) {
                 <hr/>
             </div>
         `);
-    });
-       
+    });     
 } 
 
 function fetchCurrentLocationWeather() {
